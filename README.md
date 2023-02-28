@@ -2,7 +2,7 @@
 spring runner 프로젝트
 
 - [관심사의 분리와 계층화 ](https://github.com/SeyoungKo/spring-runner/blob/section_01/seperation_of_concerns.md)
-=======
+
 # Learn Essence of Spring Template
 
 본 프로젝트는 Learn Essence of Spring 워크숍(강좌)에서 사용할 템플릿 프로젝트입니다. 
