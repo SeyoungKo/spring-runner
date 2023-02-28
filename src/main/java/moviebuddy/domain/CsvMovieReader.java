@@ -16,13 +16,21 @@ import moviebuddy.ApplicationException;
 import moviebuddy.util.FileSystemUtils;
 
 
-//추상 클래스인 MovieFinde 클래스 상속 클래스
-public class XmlMovieFinder extends MovieFinder{
-
-	// 추상 메서드 구현체 
+// MovieReader 인터페이스를 구현하는 클래스 
+public class CsvMovieReader implements MovieReader {
+	
+	// csv에서 불러오는 함수의 인터페이스 구현체 
 	@Override
-	public List<Movie> loadMovies() {
-		try {
+    public List<Movie> loadMovies() {
+    	// 모드에 따라 처리할 파일 유형이 달라짐
+//    	if (mode == "CSV") {
+//    		return loadMoviesFromCSV();
+//    		
+//    	}else if (mode == "XML") {
+//    		return loadMoviesFromXML();    		
+//    	}
+//    	
+        try {
             final URI resourceUri = ClassLoader.getSystemResource("movie_metadata.csv").toURI();
             final Path data = Path.of(FileSystemUtils.checkFileSystem(resourceUri));
             final Function<String, Movie> mapCsv = csv -> {
@@ -55,6 +63,4 @@ public class XmlMovieFinder extends MovieFinder{
             throw new ApplicationException("failed to load movies data.", error);
         }
     }
-	}
-
 }
