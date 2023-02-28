@@ -1,7 +1,7 @@
 ## 상속을 통해 다양한 메타데이터를 읽을 수 있도록 추상화하기 (Refactor extract metadata)
 
 - MovieFinder 클래스의 두 관심사
-1. csv 파일로부터 메타데이터를 읽어온다.
+1. CSV, XML 등 여러 유형의 파일로부터 메타데이터를 읽어온다.
 2. 조건에 맞는 영화를 검색한다.
 
 ### 코드를 재사용하기 위해서는 상속 < 합성 
@@ -13,6 +13,24 @@
 - 합성 : 다른 객체의 인스턴스를 자신의 객체 인스턴스에 포함해 사용하는 것. 메세지를 통해 느슨하게 결합된다.
 - 인터페이스 : 정의된 메세지를 통해서만 재사용 가능하기 때문에 구현을 캡슐화하기 용이함. 참조되는 인스턴스 교체가 쉽다.
 
+```
+// 1) MovieReader 인터페이스 정의 
+public interface MovieReader {
+	List<Movie> loadMovies();
+}
+
+// 2) MovieReader 인터페이스를 구현하는 클래스 
+public class CsvMovieReader implements MovieReader {
+	
+// csv에서 불러오는 함수의 인터페이스 구현체 
+@Override
+  public List<Movie> loadMovies() {...}
+  
+}
+
+// 3) 인터페이스 인스턴스를 사용해 구현체를 참조하도록 함
+private MovieReader movieReader = new CsvMovieReader();
+```
 
 
 ### 상속과 다형성
