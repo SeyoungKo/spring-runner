@@ -25,6 +25,9 @@ import java.util.stream.Stream;
 import moviebuddy.domain.CsvMovieReader;
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieFinder;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @author springrunner.kr@gmail.com
@@ -45,9 +48,13 @@ public class MovieBuddyApplication {
      */
 
     public void run(String[] args) throws Exception {
-//    	final MovieFinder movieFinder = new MovieFinder(new CsvMovieReader());
-        final MovieBuddyFactory movieBuddyFactory = new MovieBuddyFactory(); // 팩토리 클래스로부터 생성된 객체를 반환한다.
-        final MovieFinder movieFinder = movieBuddyFactory.movieFinder(); // movieFinder 클래스를 바로 참조하지 않고 팩토리로부터 취득하도록 함.
+//    	final MovieFinder movieFinder = new MovieFinder(new CsvMovieReader()); // movieFinder의 생성자에서 바로 구현체 객체를 생성한다.
+
+//      final MovieBuddyFactory movieBuddyFactory = new MovieBuddyFactory(); // 팩토리 클래스로부터 생성된 객체를 반환한다.
+//      final MovieFinder movieFinder = movieBuddyFactory.movieFinder(); // movieFinder 클래스를 바로 참조하지 않고 팩토리로부터 취득하도록 함.
+
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MovieBuddyFactory.class);
+        final MovieFinder movieFinder = applicationContext.getBean(MovieFinder.class);
 
         final AtomicBoolean running = new AtomicBoolean(true);
         final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));

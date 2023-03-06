@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class MovieFinder {
 	
 	// 인터페이스 인스턴스를 사용해 구현체를 참조하도록 한다.
-    // MovieFinder 클래스 내부에서 메타데이터를 읽는 방식을 결정 (csv, xml..)하기 때문에
+    // MovieFinder 클래스 내부에서 메타데이터를 읽는 방식을 결정 (csv너, xml..)하기 때문에
     // 단지 객체를 new로 생성하는 행위지만 MovieFinder는 독립적으로 확장 가능한 클래스가 될 수 없다.
 //	private MovieReader movieReader = new CsvMovieReader();
 	
