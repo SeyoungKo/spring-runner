@@ -15,6 +15,7 @@
     - 싱글톤 스코프 (default) : 컨테이너가 시작할 때 생성되고 종료될 때 소멸됨.
     - 프로토타입 스코프 : 컨테이너가 빈을 요청받을 때 마다 항상 새로운 빈을 생성해서 반환.
 
+![스크린샷 2023-03-06 오전 11 54 45](https://user-images.githubusercontent.com/39934875/223056316-39f1693e-005b-4d28-b555-7a17906d5790.png)
 
 ~~~
 => 즉, 스프링은 IoC Container인 ApplicationContext나 BeanFactory로 Bean 구성 정보를 읽어 애플리케이션을 구성한다.
