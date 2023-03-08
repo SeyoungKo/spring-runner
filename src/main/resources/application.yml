@@ -1,0 +1,4 @@
+# 모델에 주입하는 값
+site:
+  author: spring runner
+  description: spring runner description
