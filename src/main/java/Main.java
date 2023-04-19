@@ -1,7 +1,4 @@
-import adapter.Cleaner;
-import adapter.Electronic110V;
-import adapter.HairDryer;
-import adapter.SocketAdapter;
+import adapter.*;
 import singletone.Aclass;
 import singletone.Bclass;
 import singletone.SocketClient;
@@ -30,6 +27,11 @@ public class Main {
         // adapter 적용 ver
         Electronic110V adapter = new SocketAdapter(cleaner);
         connect(adapter);
+
+        AirConditioner airConditioner = new AirConditioner();
+        Electronic110V airAdapter = new SocketAdapter(airConditioner);
+        connect(airAdapter);
+
     }
 
     // 콘센트
