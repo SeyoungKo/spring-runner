@@ -1,4 +1,7 @@
 import adapter.*;
+import proxy.Browser;
+import proxy.BrowserProxy;
+import proxy.IBrowser;
 import singletone.Aclass;
 import singletone.Bclass;
 import singletone.SocketClient;
@@ -31,6 +34,22 @@ public class Main {
         AirConditioner airConditioner = new AirConditioner();
         Electronic110V airAdapter = new SocketAdapter(airConditioner);
         connect(airAdapter);
+
+
+        // proxy 적용 x
+        Browser browser = new Browser("www.naver.com");
+        browser.show();
+        browser.show();
+        browser.show();
+        browser.show();
+
+        // proxy 적용 ver
+        // 처음에만 로드되고 두번째부터 캐쉬를 사용한다.
+        IBrowser browser2 = new BrowserProxy("www.naver.com");
+        browser2.show();
+        browser2.show();
+        browser2.show();
+        browser2.show();
 
     }
 
