@@ -1,10 +1,13 @@
 import adapter.*;
+import aop.AopBrowser;
 import proxy.Browser;
 import proxy.BrowserProxy;
 import proxy.IBrowser;
 import singletone.Aclass;
 import singletone.Bclass;
 import singletone.SocketClient;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
 
@@ -51,6 +54,23 @@ public class Main {
         browser2.show();
         browser2.show();
 
+        // AOP by proxy
+        AtomicLong start = new AtomicLong();
+        AtomicLong end = new AtomicLong();
+
+        IBrowser browser3 = new AopBrowser("www.naver.com",
+                () -> {System.out.println("before"); start.set(System.currentTimeMillis());},
+                () -> {
+                    long now = System.currentTimeMillis();
+                    end.set(now - start.get());
+                }); // runnable은 람다 표현식 사용
+
+        browser3.show();
+        System.out.println("loading time: " + end.get());
+
+        // 두번째 show를 호출할 때는 캐쉬를 사용하기 때문에 0초가 소요된다.
+        browser3.show();
+        System.out.println("loading time: " + end.get());
     }
 
     // 콘센트
