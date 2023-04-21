@@ -1,5 +1,6 @@
 import adapter.*;
 import aop.AopBrowser;
+import decorator.*;
 import proxy.Browser;
 import proxy.BrowserProxy;
 import proxy.IBrowser;
@@ -71,6 +72,21 @@ public class Main {
         // 두번째 show를 호출할 때는 캐쉬를 사용하기 때문에 0초가 소요된다.
         browser3.show();
         System.out.println("loading time: " + end.get());
+
+        // decorator
+        ICar audi = new Audi(1000);
+        audi.showPrice();
+
+        ICar audi3 = new A3(audi, "A3");
+        audi3.showPrice();
+
+        ICar audi4 = new A4(audi, "A4");
+        audi4.showPrice();
+
+        ICar audi5 = new A5(audi, "A5");
+        audi5.showPrice();
+
+
     }
 
     // 콘센트
