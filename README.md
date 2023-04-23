@@ -1,10 +1,5 @@
 # spring-runner
-spring runner 프로젝트 개념 정리
-
-
-본 프로젝트는 Learn Essence of Spring 워크숍(강좌)에 사용된 템플릿 프로젝트입니다. 
-
-ref url: https://springrunner.dev/training/learn-essence-of-spring-workshop
+spring 프로젝트 개념 정리
 
 
 ### 개발환경
