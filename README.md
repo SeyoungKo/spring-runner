@@ -1,5 +1,5 @@
 # spring-runner
-spring 프로젝트 개념 정리
+spring 개념 정리
 
 
 ### 개발환경
