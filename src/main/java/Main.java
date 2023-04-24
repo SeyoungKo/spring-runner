@@ -2,6 +2,7 @@ import adapter.*;
 import aop.AopBrowser;
 import observer.Button;
 import observer.IButtonListener;
+import decorator.*;
 import proxy.Browser;
 import proxy.BrowserProxy;
 import proxy.IBrowser;
@@ -74,16 +75,29 @@ public class Main {
         browser3.show();
         System.out.println("loading time: " + end.get());
 
+//        // observer
+//        Button button = new Button("버튼");
+//        button.addListener({
+//            @Override
+//            public void clickEvent(String event) {
+//
+//            }
+//        });
+//        button.click("메세지 전달 : click");
 
-        // observer
-        Button button = new Button("버튼");
-        button.addListener({
-            @Override
-            public void clickEvent(String event) {
+        // decorator
+        ICar audi = new Audi(1000);
+        audi.showPrice();
 
-            }
-        });
-        button.click("메세지 전달 : click");
+        ICar audi3 = new A3(audi, "A3");
+        audi3.showPrice();
+
+        ICar audi4 = new A4(audi, "A4");
+        audi4.showPrice();
+
+        ICar audi5 = new A5(audi, "A5");
+        audi5.showPrice();
+
     }
 
     // 콘센트
