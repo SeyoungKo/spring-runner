@@ -1,5 +1,7 @@
 import adapter.*;
 import aop.AopBrowser;
+import observer.Button;
+import observer.IButtonListener;
 import proxy.Browser;
 import proxy.BrowserProxy;
 import proxy.IBrowser;
@@ -71,10 +73,22 @@ public class Main {
         // 두번째 show를 호출할 때는 캐쉬를 사용하기 때문에 0초가 소요된다.
         browser3.show();
         System.out.println("loading time: " + end.get());
+
+
+        // observer
+        Button button = new Button("버튼");
+        button.addListener({
+            @Override
+            public void clickEvent(String event) {
+
+            }
+        });
+        button.click("메세지 전달 : click");
     }
 
     // 콘센트
     public static void connect(Electronic110V electronic110V){
         electronic110V.powerOn();
     }
+
 }
