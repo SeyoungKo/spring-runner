@@ -1,5 +1,9 @@
 import adapter.*;
 import aop.AopBrowser;
+import facade.Ftp;
+import facade.Reader;
+import facade.SftpClient;
+import facade.Writer;
 import observer.Button;
 import observer.IButtonListener;
 import decorator.*;
@@ -98,6 +102,32 @@ public class Main {
         ICar audi5 = new A5(audi, "A5");
         audi5.showPrice();
 
+        // Facade
+        // 적용 x
+        Ftp ftpClient = new Ftp("www.ftp.com", 22, "/home/etc");
+        ftpClient.connect();
+        ftpClient.moveDirectory();
+
+        Writer writer = new Writer("text.tmp");
+        writer.fileConnect();
+        writer.fileWrite();
+
+        Reader reader = new Reader("text.tmp");
+        reader.fileConnect();
+        reader.fileRead();
+
+        reader.fileDisconnect();
+        writer.fileDisconnect();
+        ftpClient.disConnect();
+
+        // 적용 o
+        // sftpClient를 통해 세부 기능들을 구현하고 한번에 관련 기능을 접근할 수 있다.
+        SftpClient sftpClient = new SftpClient("www.foo.co.kr", 22, "/home/etc", "text.tmp");
+        sftpClient.connect();
+
+        sftpClient.write();
+        sftpClient.read();
+        sftpClient.disConnect();
     }
 
     // 콘센트
